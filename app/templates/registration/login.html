@@ -1,0 +1,17 @@
+{% extends 'app/base.html' %}
+{% load socialaccount %}
+
+{% block content%}
+<div class="log-block">
+    <h2>Log In</h2>
+    <form method="post">
+  {% csrf_token %}
+  <p>Username:</p>
+  <input required name="username" type="text" />
+  <p>Password:</p>
+  <input required name="password" type="Password" />
+  <button type="submit">Log In</button><br />
+    <a href="/sign-up">Sign Up</a><br />
+    <a href="{% provider_login_url 'google' %}">Login With Google</a>
+</div>
+{% endblock %}
