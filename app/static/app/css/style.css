@@ -1,6 +1,37 @@
 body {
     margin: 0;
     font-family: sans-serif;
+    min-width: 40%;
+}
+
+.article-container {
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 80%;
+
+}
+
+.article-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 25px;
+}
+
+.article-card {
+border: 1px solid black;
+height: 300px;
+width: 250px;
+padding-bottom: 50px;
+text-align: center;
+border-radius: 10px;
+}
+
+.card-image {
+  width: 250px;
+  height: 275px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .log-block {
@@ -13,7 +44,6 @@ body {
 .topnav {
     overflow: hidden;
     background-color: rgb(255, 255, 255);
-    position: absolute;
     width: 100%;
   }
   
@@ -31,6 +61,36 @@ body {
   .topnav .icon {
     display: none;
   }
+
+
+/* Desktop Detail */
+.detail-title {
+  width: 60%;
+  margin: auto;
+  font-size: xx-large;
+}
+
+.detail-body {
+  width: 70%;
+  margin: auto;
+}
+
+.detail-snippet {
+  width: 70%;
+  margin: auto;
+  font-style: italic;
+}
+
+.detail-image-container {
+  width: 100%;
+}
+
+.detail-image {
+  width: 100%;
+  height: 400px;
+}
+
+/* Mobile Settings */
   
   @media screen and (max-width: 600px) {
     .topnav a:not(:first-child) {display: none;}
@@ -38,6 +98,20 @@ body {
       float: right;
       display: block;
       
+    }
+
+    .article-list {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    
+    .article-card {
+    border: 1px solid black;
+    height: 300px;
+    width: 250px;
+    padding-bottom: 50px;
+    text-align: center;
+    border-radius: 10px;
     }
   }
   

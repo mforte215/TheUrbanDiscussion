@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'app',
+    'ckeditor',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -72,7 +73,7 @@ WSGI_APPLICATION = 'theurbanistforum.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'theurbanistforum',
+        'NAME': 'theurbandiscussiondb',
         'USER': 'markf',
         'PASSWORD': 'Winkel1991',
         'HOST': 'localhost',
@@ -139,10 +140,17 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-SITE_ID = 3
+SITE_ID = 4
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_DEFAULT_HTTP_PROTOCOL='http'
 ACCOUNT_LOGOUT_ON_GET=True
 ACCOUNT_LOGIN_ON_GET=True
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+
+AUTH_USER_MODEL = 'app.Member'

@@ -1,0 +1,21 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+
+{% if article %}
+<div class="detail-image-container">
+<img class="detail-image" src="{{article.image}}" />
+</div>
+<div class="detail-title">
+<h1>{{article.title}}</h1>
+</div>
+<div class="detail-snippet">
+<h3>{{article.snippet}}</h3>
+<p>Published: {{article.published_date}}</p>
+</div>
+<div class="detail-body">
+    <p>{{article.text|safe}}</p>
+</div>
+{% endif %}
+
+{% endblock %}
