@@ -10,7 +10,7 @@
     <a href="{% url 'login' %}">Login</a>
     {% endif %}
     <a href="/">Editorals</a>
-    <a href="/">Forum</a>
+    <a href="{% url 'thread_list' %}">Forum</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
       <i class="fa fa-bars"></i>
     </a>

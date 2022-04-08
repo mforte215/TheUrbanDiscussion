@@ -1,18 +1,4 @@
-"""theurbanistforum URL Configuration
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path, include
 from app import views
@@ -21,8 +7,11 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', views.IndexView, name='index'),
+    path('threads/', views.threadListView, name='thread_list'),
+    path('threads/<uuid:pk>/', views.ThreadDetailView, name='thread_detail'),
+    path('create-thread/', views.CreateThreadView, name='create-thread'),
     path ('login/', views.LoginView, name='login'),
-    path('article/<uuid:pk>/', views.ArticleDetailView, name='article_detail'),
+    path('articles/<uuid:pk>/', views.ArticleDetailView, name='article_detail'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('sign-up/', views.SignUpForm.as_view(), name='signup'),
     path('accounts/', include('allauth.urls')),

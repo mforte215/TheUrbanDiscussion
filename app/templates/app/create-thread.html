@@ -1,0 +1,11 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<h1>Create Thread</h1>
+<form method="post">
+    {% csrf_token %}
+    <p>Thread Name:
+    <input name='title' type="text" /></p>
+    <textarea style="resize: none;" rows="4" cols="50" name='text'></textarea><br />
+    <button type="submit">Create Thread</button><br />
+</form>
+{% endblock %}

@@ -56,8 +56,7 @@ class Thread(models.Model):
     published_date = models.DateTimeField(auto_now_add=True, editable=False)
     text = RichTextField()
     slug = models.SlugField(unique=True, db_index=True, blank=True, max_length=255)
-    tags = models.ManyToManyField(Tag)
-    image = models.URLField()
+    tags = models.ManyToManyField(Tag, blank=True)
     date = models.DateTimeField(auto_now_add=True, editable=False, null=True)
 
     def __str__(self):
@@ -72,7 +71,6 @@ class Comment(models.Model):
     thread = models.ForeignKey(Thread,
                              on_delete=models.CASCADE,
                              related_name='comments')
-    name = models.CharField(max_length=80) 
     email = models.ForeignKey(
         Member, on_delete=CASCADE, related_name="user_comments")
     body = models.TextField() 
