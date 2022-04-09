@@ -1,8 +1,15 @@
 {% extends 'app/base.html' %}
+{% load static %}
 {% block content %}
 <h1>Latest Discussions</h1>
-<a href="{% url 'create-thread' %}">Create New Discussion</a>
+<div class="create-discussion-area">
+<a class="create-discussion-link" href="{% url 'create-thread' %}">Create New Discussion</a>
+</div>
+<div class="thread-section">
 {% for thread in threads %}
+<div class="thread-list-item">
 <a href="{% url 'thread_detail' thread.id %}" ><h3>{{thread.title}}</h3></a>
+</div>
 {% endfor %}
+</div>
 {% endblock %}

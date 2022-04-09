@@ -3,19 +3,25 @@
 {% block content %}
 {% if thread %}
 <h1>{{thread.title}}</h1>
+{% if user.is_authenticated %}
 <a href="{% url 'create-thread' %}">Create New Thread</a>
+{% endif %}
 <div>{{thread.text|safe}}</div>
-<div>
-    <h3>Comments</h3>
+<div class="comment-section">
+    {% if user.is_authenticated %}
     <p>Add Comment</p>
     <form method="post">
-        <textarea style="resize: none;" rows="4" cols="50" name='text'></textarea><br />
+        {% csrf_token %}
+        <textarea style="resize: none;" rows="4" cols="50" name='body'></textarea><br />
         <button type="submit">Add Comment</button><br />
     </form>
-    {% for comment in comments %}
-    <div>
-        {{comment.body}} by {{comment.email}}
-    </div>
+    {% endif %}
+    <h3>Comments</h3>
+    {% for comment in thread.comments.all %}
+    <p class="comment-detail">{{ comment.body }}
+        <br />
+        by {{ comment.email }}
+    </p>
     {% endfor %}
 </div>
 {% endif %}

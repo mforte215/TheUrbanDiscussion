@@ -41,6 +41,9 @@ class Article(models.Model):
     top_post = models.BooleanField(default=False)
     date = models.DateTimeField(auto_now_add=True, editable=False, null=True)
 
+    class Meta:
+        ordering = ['-published_date']
+
     def __str__(self):
         return f"{self.title} by {self.author}"
 
@@ -58,6 +61,9 @@ class Thread(models.Model):
     slug = models.SlugField(unique=True, db_index=True, blank=True, max_length=255)
     tags = models.ManyToManyField(Tag, blank=True)
     date = models.DateTimeField(auto_now_add=True, editable=False, null=True)
+
+    class Meta:
+        ordering = ['-published_date']
 
     def __str__(self):
         return f"{self.title} by {self.author}"
@@ -79,7 +85,7 @@ class Comment(models.Model):
     active = models.BooleanField(default=True) 
 
     class Meta: 
-        ordering = ('created',) 
+        ordering = ('-created',) 
 
     def __str__(self): 
-        return 'Comment by {} on {}'.format(self.name, self.post)
+        return f"Comment by {self.email} on Thread {self.thread}"

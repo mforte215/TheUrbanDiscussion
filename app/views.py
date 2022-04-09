@@ -5,7 +5,7 @@ from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
-from .models import Article, Thread
+from .models import Article, Thread, Comment
 from django.contrib.auth import authenticate, login
 
 def IndexView(request):
@@ -39,8 +39,26 @@ def ArticleDetailView(request, pk):
     return render(request, 'app/article-detail.html', {'article': article})
 
 def ThreadDetailView(request, pk):
-    thread = get_object_or_404(Thread, pk=pk)
-    return render(request, 'app/thread-detail.html', {'thread': thread})
+    if request.method == 'GET':
+        thread = get_object_or_404(Thread, pk=pk)
+        comments = thread.comments.all()
+        if comments is not None:
+            comment_list = comments
+        return render(request, 'app/thread-detail.html', {'thread': thread})
+    elif request.method == 'POST':
+        if request.user.is_authenticated:
+            body = request.POST['body']
+            email = request.user
+            thread = get_object_or_404(Thread, pk=pk)
+            if thread is not None:
+                comment = Comment(body=body, email=email, thread=thread)
+                comment.save()
+                return render(request, 'app/thread-detail.html', {'thread': thread})
+            else:
+                thread_list = get_list_or_404(Thread)
+                return render(request, 'app/thread-list.html', {'threads': thread_list})
+        else:
+            return render(request, 'registration/login.html')
 
 class SignUpForm(generic.CreateView):
     form_class= UserCreateForm
@@ -60,14 +78,9 @@ def CreateThreadView(request):
                 user = request.user
                 title = request.POST['title']
                 text = request.POST['text']
-                print('User:')
-                print(user)
-                print('Title:')
-                print(title)
-                print('Text')
-                print(text)
                 thread = Thread(author=user, title=title, text=text)
                 thread.save()
                 return HttpResponseRedirect(reverse_lazy('thread_list'))
             else:
                 return render(request, 'registration/login.html', context)
+

@@ -5,6 +5,13 @@ body {
     font-family: 'Ubuntu Mono';
     min-width: 40%;
 }
+a {
+  color: black;
+}
+
+a :active {
+  color: black;
+}
 
 .article-container {
   margin-top: 5%;
@@ -64,6 +71,21 @@ border-radius: 10px;
     display: none;
   }
 
+/* desktop Thread List */
+.thread-section {
+  width: 60%;
+  margin: auto;
+}
+
+.create-discussion-area {
+  width: 90%;
+  margin-right: 10%;
+  display: inline-block;
+}
+
+.create-discussion-link {
+  float: right;
+}
 
 /* Desktop Detail */
 .detail-title {
