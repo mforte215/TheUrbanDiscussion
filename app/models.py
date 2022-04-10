@@ -71,6 +71,25 @@ class Thread(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Thread, self).save(*args, **kwargs)
+    
+    @property
+    def latest_comment_date(self):
+        latest_comment = self.published_date
+        comments = self.comments.all()
+        if len(comments) > 0:
+            latest_comment = comments[0].created
+        return latest_comment
+
+    @property
+    def num_of_comments(self):
+        number_of_comments = 0
+        comments = self.comments.all()
+        if len(comments) > 0:
+            number_of_comments = len(comments)
+        return number_of_comments
+
+
+
 
 class Comment(models.Model): 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

@@ -7,6 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from .models import Article, Thread, Comment
 from django.contrib.auth import authenticate, login
+from django.db.models import Max
 
 def IndexView(request):
     article_list = get_list_or_404(Article)
@@ -14,7 +15,8 @@ def IndexView(request):
 
 def threadListView(request):
     thread_list = get_list_or_404(Thread)
-    return render(request, 'app/thread-list.html', {'threads': thread_list})
+    sorted_thread_list = sorted(thread_list, key=lambda t: t.latest_comment_date, reverse=True)
+    return render(request, 'app/thread-list.html', {'threads': sorted_thread_list})
 
 def LoginView(request):
     if request.method == 'GET':
@@ -71,7 +73,7 @@ def CreateThreadView(request):
             if request.user.is_authenticated:
                 return render(request, 'app/create-thread.html', context)
             else:
-                return render(request, 'registration/login.html', context)
+                return HttpResponseRedirect(reverse_lazy('login'))
         elif request.method == 'POST':
             if request.user.is_authenticated:
                 context = {}
@@ -82,5 +84,5 @@ def CreateThreadView(request):
                 thread.save()
                 return HttpResponseRedirect(reverse_lazy('thread_list'))
             else:
-                return render(request, 'registration/login.html', context)
+                return HttpResponseRedirect(reverse_lazy('login'))
 

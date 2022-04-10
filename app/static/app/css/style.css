@@ -7,6 +7,7 @@ body {
 }
 a {
   color: black;
+  text-decoration: none;
 }
 
 a :active {
@@ -72,9 +73,23 @@ border-radius: 10px;
   }
 
 /* desktop Thread List */
-.thread-section {
+.header-title {
   width: 60%;
   margin: auto;
+}
+
+.thread-section {
+  width: 80%;
+  margin: auto auto auto 17%;
+}
+
+.thread-title-column {
+  width: 80%;
+}
+
+.table-rows-thread td {
+  border-bottom: 5px solid black;
+  border-collapse: collapse;
 }
 
 .create-discussion-area {
@@ -85,6 +100,26 @@ border-radius: 10px;
 
 .create-discussion-link {
   float: right;
+}
+
+.header-title-section {
+  width: 100%;
+  display: inline-flex;
+}
+
+.section-header-one {
+  width: 33%;
+}
+
+.section-header-two {
+  width: 33%;
+  font-size: x-large;
+}
+
+.section-header-three {
+  width: 33%;
+  padding: 35px;
+  
 }
 
 /* Desktop Detail */
