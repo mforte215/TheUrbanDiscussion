@@ -11,14 +11,12 @@ class UserCreateForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(UserCreateForm, self).__init__(*args, **kwargs)
 
-        for fieldname in ['email', 'password1', 'password2']:
+        for fieldname in ['username', 'email', 'password1', 'password2']:
             self.fields[fieldname].help_text = None
     
     class Meta:
         model = User
-        fields = ['email', 'password1', 'password2']
+        fields = ['username', 'email', 'password1', 'password2']
 
-class ThreadCreateForm(forms.Form):
-    title = forms.CharField(label='Thread Name', max_length=200)
     
 

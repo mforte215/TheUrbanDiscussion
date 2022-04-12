@@ -52,7 +52,7 @@ def ThreadDetailView(request, pk):
             email = request.user
             thread = get_object_or_404(Thread, pk=pk)
             if thread is not None:
-                comment = Comment(body=body, email=email, thread=thread)
+                comment = Comment(body=body, user=email, thread=thread)
                 comment.save()
                 return render(request, 'app/thread-detail.html', {'thread': thread})
             else:

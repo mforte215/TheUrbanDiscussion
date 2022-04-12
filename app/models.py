@@ -1,7 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from .managers import MemberManager
 import uuid
 from django.db.models.deletion import CASCADE
 from django.utils.text import slugify
@@ -9,16 +8,11 @@ from ckeditor.fields import RichTextField
 
 class Member(AbstractUser):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    username = None
     email = models.EmailField(_('email address'), unique=True)
-
-    USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
-    objects = MemberManager()
-
     def __str__(self):
-        return self.email
+        return self.username
 
 class Tag(models.Model):
     name = models.CharField(max_length=100)
@@ -96,7 +90,7 @@ class Comment(models.Model):
     thread = models.ForeignKey(Thread,
                              on_delete=models.CASCADE,
                              related_name='comments')
-    email = models.ForeignKey(
+    user = models.ForeignKey(
         Member, on_delete=CASCADE, related_name="user_comments")
     body = models.TextField() 
     created = models.DateTimeField(auto_now_add=True) 
@@ -107,4 +101,4 @@ class Comment(models.Model):
         ordering = ('-created',) 
 
     def __str__(self): 
-        return f"Comment by {self.email} on Thread {self.thread}"
+        return f"Comment by {self.username} on Thread {self.thread}"

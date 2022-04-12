@@ -3,7 +3,7 @@
 {% block content%}
 <div class="article-container">
     {% if user.is_authenticated %}
-    <p>Welcome {{user.email}}</p>
+    <p>Welcome {{user.username}}</p>
     {% endif %}
 <div class="article-list">
 {% for article in articles %}
