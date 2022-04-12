@@ -7,7 +7,6 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from .models import Article, Thread, Comment
 from django.contrib.auth import authenticate, login
-from django.db.models import Max
 
 def IndexView(request):
     article_list = get_list_or_404(Article)

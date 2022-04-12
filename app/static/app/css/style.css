@@ -80,11 +80,22 @@ border-radius: 10px;
 
 .thread-section {
   width: 80%;
-  margin: auto auto auto 17%;
+  margin: auto auto 5% 10%;
 }
 
 .thread-title-column {
-  width: 80%;
+  width: 70%;
+
+}
+
+.thread-date-column {
+  text-align: center;
+  width: 25%;
+}
+
+
+.thread-reply-count {
+  text-align: center;
 }
 
 .table-rows-thread td {
@@ -122,11 +133,28 @@ border-radius: 10px;
   
 }
 
+.detail-section-header-one {
+  width: 15%;
+}
+
+.detail-section-header-two {
+  width: 70%;
+  font-size: x-large;
+  text-align: center;
+}
+
+.detail-section-header-three {
+  width: 15%;
+  padding: 35px;
+  
+}
+
 /* Desktop Detail */
 .detail-title {
   width: 60%;
   margin: auto;
   font-size: xx-large;
+  text-align: center;
 }
 
 .detail-body {
@@ -147,6 +175,11 @@ border-radius: 10px;
 .detail-image {
   width: 100%;
   height: 400px;
+}
+
+.thread-detail {
+  width: 80%;
+  margin: auto;
 }
 
 /* Mobile Settings */

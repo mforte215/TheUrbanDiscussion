@@ -18,10 +18,10 @@
 <td class="thread-title-column">
 <a href="{% url 'thread_detail' thread.id %}" ><h3>{{thread.title}}</h3></a>
 </td>
-<td class="thread-title-column">
+<td class="thread-date-column">
     {{thread.latest_comment_date}}
 </td>
-<td>{{thread.num_of_comments}}</td>
+<td class="thread-reply-count">{{thread.num_of_comments}}</td>
 </tr>
 {% endfor %}
 

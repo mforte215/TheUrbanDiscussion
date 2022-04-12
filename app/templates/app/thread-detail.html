@@ -2,10 +2,12 @@
 
 {% block content %}
 {% if thread %}
-<h1>{{thread.title}}</h1>
-{% if user.is_authenticated %}
-<a href="{% url 'create-thread' %}">Create New Thread</a>
-{% endif %}
+<div class="header-title-section">
+    <div class="detail-section-header-one"></div>
+    <div class="detail-section-header-two"><h1 class="create-discussion-title">{{thread.title}}</h1></div>
+    <div class="detail-section-header-three"><a class="create-discussion-link" href="{% url 'create-thread' %}">Create New Discussion</a></div>
+    </div>
+<div class="thread-detail">
 <div>{{thread.text|safe}}</div>
 <div class="comment-section">
     {% if user.is_authenticated %}
@@ -24,5 +26,6 @@
     </p>
     {% endfor %}
 </div>
+</div>s
 {% endif %}
 {% endblock %}
