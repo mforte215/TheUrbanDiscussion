@@ -1,0 +1,17 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="profile-display">
+{{user.username}}
+</div>
+<div class="profile-thread-list">
+    <h3>Your Threads</h3>
+    {% for thread in threads %}
+    <p>
+    <a href={% url 'thread_detail' thread.id %}>{{ thread.title }}</a>
+    </p>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -182,6 +182,29 @@ border-radius: 10px;
   margin: auto;
 }
 
+
+/* Profile CSS */
+
+.profile-display {
+  width: 80%;
+  margin: 7% 10% 5% 10%;
+  display: block;
+}
+.profile-thread-list {
+  display: block;
+  width: 80%;
+  margin: 0% 10% 0% 10%;
+}
+
+.profile-thread-list a {
+  color: black;
+}
+
+
+.profile-thread-list a :active {
+  color: black;
+}
+
 /* Mobile Settings */
   
   @media screen and (max-width: 600px) {

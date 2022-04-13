@@ -101,4 +101,4 @@ class Comment(models.Model):
         ordering = ('-created',) 
 
     def __str__(self): 
-        return f"Comment by {self.username} on Thread {self.thread}"
+        return f"Comment by {self.user} on Thread {self.thread}"

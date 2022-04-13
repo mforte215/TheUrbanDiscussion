@@ -22,7 +22,7 @@
     {% for comment in thread.comments.all %}
     <p class="comment-detail">{{ comment.body }}
         <br />
-        by {{ comment.email }}
+        by {{ comment.user }}
     </p>
     {% endfor %}
 </div>
