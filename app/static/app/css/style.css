@@ -111,6 +111,9 @@ border-radius: 10px;
 
 .create-discussion-link {
   float: right;
+  padding: 7px;
+  border: 2px solid black;
+  border-radius: 10px;
 }
 
 .header-title-section {
@@ -132,6 +135,57 @@ border-radius: 10px;
   padding: 35px;
   
 }
+
+.create-section-header-one {
+  width: 33%;
+}
+
+.create-section-header-two {
+  width: 43%;
+  font-size: x-large;
+}
+
+.create-section-header-three {
+  width: 23%;
+  padding: 35px;
+  
+}
+
+.create-discussion-section {
+  width: 80%;
+  margin-left: 20%;
+}
+
+.create-discussion-title-input {
+  width: 70%;
+  border: 2px solid black;
+  padding: 7px;
+  border-radius: 10px;
+}
+
+.create-discussion-textarea-input {
+  resize: none;
+  width: 70%;
+  border: 2px solid black;
+  padding: 7px;
+  border-radius: 10px;
+}
+
+.create-discussion-submit-input {
+  text-decoration: none;
+  background: none;
+  padding: 7px;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin-top: 5px;
+  
+}
+
+.create-discussion-submit-container {
+  width: 70%;
+  text-align: center;
+}
+
 
 .detail-section-header-one {
   width: 15%;
@@ -199,6 +253,25 @@ border-radius: 10px;
   border-radius: 10px;
 }
 
+.profile-split-item-container {
+  width: 100%;
+  display: inline-flex;
+  border-bottom: 3px solid black;
+  margin-bottom: 5px;
+}
+
+.profile-split-item-one {
+  width: 60%;
+}
+
+.profile-split-item-two {
+  width: 30%;
+  text-align: right;
+}
+
+.profile-split-item-two-link {
+  color: red;
+}
 
 
 

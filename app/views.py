@@ -95,3 +95,14 @@ def ProfileView(request):
             else:
                 return HttpResponseRedirect(reverse_lazy('login'))
 
+def DeleteThreadConfirmView(request, pk):
+    if request.method == 'GET':
+        context = {}
+        if request.user.is_authenticated:
+            thread = Thread.objects.get(pk=pk)
+            if request.user == thread.author:
+                return render(request, 'app/delete-confirm.html', context)
+            else:
+                return render(request, 'app/delete-confirm.html', {'error_message': 'You do not have permission to delete this thread'})
+        else:
+            return HttpResponseRedirect(reverse_lazy('login'))

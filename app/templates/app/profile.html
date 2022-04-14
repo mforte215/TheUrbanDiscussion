@@ -7,9 +7,14 @@
     <h1>Your Threads</h1>
     {% if threads %}
     {% for thread in threads %}
-    <p>
+    <div class="profile-split-item-container">
+        <div class="profile-split-item-one">
     <a href={% url 'thread_detail' thread.id %}>{{ thread.title }}</a>
-    </p>
+        </div>
+        <div class="profile-split-item-two">
+            <a class="profile-split-item-two-link" href="{% url 'thread_delete' thread.id %}">DELETE</a>
+        </div>
+    </div>
     {% endfor %}
     {% else %}
     <p>No threads to show</p>
@@ -19,10 +24,15 @@
     <h1>Your Comments</h1>
     {% if comments %}
     {% for comment in comments %}
-    <p>
+    <div class="profile-split-item-container">
+    <div class="profile-split-item-one">
     <a href={% url 'thread_detail' comment.thread.id %}>Comment made in {{ comment.thread.title }}</a>
     <blockquote>{{ comment.body }}</blockquote>
-    </p>
+    </div>
+    <div class="profile-split-item-two">
+        <a class="profile-split-item-two-link" href="/">DELETE</a>
+    </div>
+    </div>
     {% endfor %}
     {% else %}
     <p>No comments to show</p>

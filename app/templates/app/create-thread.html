@@ -1,11 +1,20 @@
 {% extends 'app/base.html' %}
 {% block content %}
-<h1>Create Thread</h1>
+<div class="header-title-section">
+    <div class="create-section-header-one"></div>
+    <div class="create-section-header-two"><h1 class="create-discussion-title">Create Thread Discussion</h1></div>
+    <div class="create-section-header-three"><a class="create-discussion-link" href="{% url 'thread_list' %}">Back to Discussions</a></div>
+    </div>
+<div class="create-discussion-section">
 <form method="post">
     {% csrf_token %}
-    <p>Thread Name:
-    <input name='title' type="text" /></p>
-    <textarea style="resize: none;" rows="4" cols="50" name='text'></textarea><br />
-    <button type="submit">Create Thread</button><br />
+    <p>Thread Name:</p>
+    <input class="create-discussion-title-input" name='title' type="text" />
+    <p>Discussion Body:</p>
+    <textarea class="create-discussion-textarea-input" name='text'></textarea>
+    <div class="create-discussion-submit-container">
+    <button class="create-discussion-submit-input" type="submit">Create Thread</button>
+    </div>
 </form>
+</div>
 {% endblock %}
