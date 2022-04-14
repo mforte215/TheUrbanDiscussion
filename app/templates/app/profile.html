@@ -30,7 +30,7 @@
     <blockquote>{{ comment.body }}</blockquote>
     </div>
     <div class="profile-split-item-two">
-        <a class="profile-split-item-two-link" href="/">DELETE</a>
+        <a class="profile-split-item-two-link" href="{% url 'comment-delete' comment.id %}">DELETE</a>
     </div>
     </div>
     {% endfor %}

@@ -10,6 +10,7 @@ urlpatterns = [
     path('threads/', views.threadListView, name='thread_list'),
     path('threads/<uuid:pk>/', views.ThreadDetailView, name='thread_detail'),
     path('threads/delete/<uuid:pk>/', views.DeleteThreadConfirmView, name='thread_delete'),
+    path('comments/delete/<uuid:pk>/', views.DeleteCommentConfirmView, name='comment-delete'),
     path('create-thread/', views.CreateThreadView, name='create-thread'),
     path('profile/', views.ProfileView, name='profile'),
     path ('login/', views.LoginView, name='login'),

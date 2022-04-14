@@ -92,7 +92,7 @@ class Comment(models.Model):
                              related_name='comments')
     user = models.ForeignKey(
         Member, on_delete=CASCADE, related_name="user_comments")
-    body = models.TextField() 
+    body = RichTextField()
     created = models.DateTimeField(auto_now_add=True) 
     updated = models.DateTimeField(auto_now=True) 
     active = models.BooleanField(default=True) 

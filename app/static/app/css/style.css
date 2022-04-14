@@ -154,22 +154,17 @@ border-radius: 10px;
 .create-discussion-section {
   width: 80%;
   margin-left: 20%;
+  
 }
 
-.create-discussion-title-input {
-  width: 70%;
+.create-discussion-title-input input {
+  width: 50%;
   border: 2px solid black;
   padding: 7px;
   border-radius: 10px;
+  margin-bottom: 30px;
 }
 
-.create-discussion-textarea-input {
-  resize: none;
-  width: 70%;
-  border: 2px solid black;
-  padding: 7px;
-  border-radius: 10px;
-}
 
 .create-discussion-submit-input {
   text-decoration: none;
@@ -178,12 +173,18 @@ border-radius: 10px;
   border: 2px solid black;
   border-radius: 10px;
   margin-top: 5px;
+  margin-bottom: 5%;
   
+}
+
+.create-discussion-textarea-input {
+  margin-right: 5%;
 }
 
 .create-discussion-submit-container {
   width: 70%;
   text-align: center;
+  
 }
 
 
@@ -273,7 +274,32 @@ border-radius: 10px;
   color: red;
 }
 
+.delete-discussion-submit-input {
+  border: none;
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
 
+.delete-thread-confirm-container {
+  width: 80%;
+  margin: 7% 10% 0% 10%;
+  text-align: center;
+}
+
+.fixed-form-field-delete {
+  border: none;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  font-size: large;
+  font: inherit;
+}
+
+.fixed-form-field-delete :active {
+  border: none;
+}
 
 
 /* Mobile Settings */
@@ -298,6 +324,11 @@ border-radius: 10px;
     padding-bottom: 50px;
     text-align: center;
     border-radius: 10px;
+    }
+
+    .create-discussion-section {
+      margin-left: 10%;
+      
     }
   }
   

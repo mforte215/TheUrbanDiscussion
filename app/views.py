@@ -7,6 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from .models import Article, Thread, Comment
 from django.contrib.auth import authenticate, login
+from .forms import ThreadCreateForm
 
 def IndexView(request):
     article_list = get_list_or_404(Article)
@@ -70,18 +71,21 @@ def CreateThreadView(request):
         if request.method == 'GET':
             context = {}
             if request.user.is_authenticated:
-                return render(request, 'app/create-thread.html', context)
+                form = ThreadCreateForm()
+                return render(request, 'app/create-thread.html', {'form': form})
             else:
                 return HttpResponseRedirect(reverse_lazy('login'))
         elif request.method == 'POST':
             if request.user.is_authenticated:
                 context = {}
                 user = request.user
-                title = request.POST['title']
-                text = request.POST['text']
-                thread = Thread(author=user, title=title, text=text)
-                thread.save()
-                return HttpResponseRedirect(reverse_lazy('thread_list'))
+                form = ThreadCreateForm(request.POST)
+                if form.is_valid():
+                    title = form.cleaned_data['title']
+                    text = form.cleaned_data['text']
+                    thread = Thread(author=user, title=title, text=text)
+                    thread.save()
+                    return HttpResponseRedirect(reverse_lazy('thread_list'))
             else:
                 return HttpResponseRedirect(reverse_lazy('login'))
 
@@ -100,9 +104,48 @@ def DeleteThreadConfirmView(request, pk):
         context = {}
         if request.user.is_authenticated:
             thread = Thread.objects.get(pk=pk)
-            if request.user == thread.author:
-                return render(request, 'app/delete-confirm.html', context)
+            if thread.title is not None:
+                if request.user == thread.author:
+                    return render(request, 'app/delete-thread-confirm.html', {'thread': thread })
+                else:
+                    return HttpResponseRedirect(reverse_lazy('index'))
             else:
-                return render(request, 'app/delete-confirm.html', {'error_message': 'You do not have permission to delete this thread'})
+                return HttpResponseRedirect(reverse_lazy('index'))
         else:
             return HttpResponseRedirect(reverse_lazy('login'))
+    elif request.method == 'POST':
+        if request.user.is_authenticated:
+            thread = Thread.objects.get(pk=pk)
+            if request.user == thread.author:
+                thread.delete()
+                return HttpResponseRedirect(reverse_lazy('profile'))
+            else:
+                return HttpResponseRedirect(reverse_lazy('index'))
+        else:
+            return HttpResponseRedirect(reverse_lazy('login'))
+
+def DeleteCommentConfirmView(request, pk):
+    if request.method == 'GET':
+        context = {}
+        if request.user.is_authenticated:
+            comment = Comment.objects.get(pk=pk)
+            if comment is not None:
+                if request.user == comment.user:
+                    return render(request, 'app/delete-comment-confirm.html', {'comment': comment })
+                else:
+                    return HttpResponseRedirect(reverse_lazy('index'))
+            else:
+                return HttpResponseRedirect(reverse_lazy('index'))
+        else:
+            return HttpResponseRedirect(reverse_lazy('login'))
+    elif request.method == 'POST':
+        if request.user.is_authenticated:
+            comment = Comment.objects.get(pk=pk)
+            if request.user == comment.user:
+                comment.delete()
+                return HttpResponseRedirect(reverse_lazy('profile'))
+            else:
+                return HttpResponseRedirect(reverse_lazy('index'))
+        else:
+            return HttpResponseRedirect(reverse_lazy('login'))
+

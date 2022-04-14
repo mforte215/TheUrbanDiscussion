@@ -1,16 +1,13 @@
 import os
-
+from dotenv import load_dotenv
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv()
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-=!*b*)=x6&@tyn!ih%$lg&j!1a8wdjhs#8(15uajxw+e_mq@ao'
+SECRET_KEY = os.getenv('SKUltra')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -73,10 +70,10 @@ WSGI_APPLICATION = 'theurbanistforum.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'theurbandiscussiondb',
-        'USER': 'markf',
-        'PASSWORD': 'Winkel1991',
-        'HOST': 'localhost',
+        'NAME': os.getenv('DBNAME'),
+        'USER': os.getenv('DBU'),
+        'PASSWORD': os.getenv('DBP'),
+        'HOST': os.getenv('HOST'),
         'PORT': '',
     }
 }
@@ -151,3 +148,8 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 SOCIALACCOUNT_LOGIN_ON_GET=True
 AUTH_USER_MODEL = 'app.Member'
+CKEDITOR_CONFIGS = {
+'default': {
+    'width': 'auto',
+          },
+    }

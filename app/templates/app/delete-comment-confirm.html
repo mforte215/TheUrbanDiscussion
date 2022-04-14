@@ -1,0 +1,20 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<div class="delete-thread-confirm-container">
+    {% if user.is_authenticated %}
+    <form method="post">
+        {% csrf_token %}
+        <p>Are you sure you want to delete Comment:</p>
+        <input class="fixed-form-field-delete" type="text" value="'{{comment.body}}' in:" readonly />
+        <input class="fixed-form-field-delete" type="text" value="{{comment.thread}}" readonly />
+        <input type="hidden" name="id" value="{{comment.id}}">
+        <button class="delete-discussion-submit-input" type="submit">Delete Discussion</button>
+    </form>
+    {% elif error_message %}
+        <p>{{ error_message }}</p>
+    {% else %}
+    <p>Sorry, something went wrong. Try again later!</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -8,12 +8,20 @@
 <div class="create-discussion-section">
 <form method="post">
     {% csrf_token %}
-    <p>Thread Name:</p>
-    <input class="create-discussion-title-input" name='title' type="text" />
-    <p>Discussion Body:</p>
-    <textarea class="create-discussion-textarea-input" name='text'></textarea>
+    {{form.media}}
+    <div class="create-discussion-title-input">
+        {{ form.title.errors }}
+        <label for="{{ form.title.id_for_label }}">Thread Title:</label>
+        {{ form.title }}
+    </div>
+    <label for="{{ form.text.id_for_label }}">Thread Text:</label>
+    <div class="create-discussion-textarea-input">
+        {{ form.text.errors }}
+        {{ form.text }}
+    </div>
     <div class="create-discussion-submit-container">
     <button class="create-discussion-submit-input" type="submit">Create Thread</button>
+    </div>
     </div>
 </form>
 </div>
