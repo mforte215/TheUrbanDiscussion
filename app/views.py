@@ -90,7 +90,8 @@ def ProfileView(request):
             context = {}
             if request.user.is_authenticated:
                 threads = Thread.objects.filter(author=request.user)
-                return render(request, 'app/profile.html', {'threads': threads})
+                comments = Comment.objects.filter(user=request.user)
+                return render(request, 'app/profile.html', {'threads': threads, 'comments': comments})
             else:
                 return HttpResponseRedirect(reverse_lazy('login'))
 

@@ -186,24 +186,22 @@ border-radius: 10px;
 /* Profile CSS */
 
 .profile-display {
-  width: 80%;
-  margin: 7% 10% 5% 10%;
-  display: block;
-}
-.profile-thread-list {
-  display: block;
-  width: 80%;
-  margin: 0% 10% 0% 10%;
+  width: 100%;
+  display: flex;
+  margin-top: 5%;
 }
 
-.profile-thread-list a {
-  color: black;
+.profile-split-display {
+  width: 40%;
+  margin-left: 5%;
+  border: 5px solid black;
+  padding: 7px;
+  border-radius: 10px;
 }
 
 
-.profile-thread-list a :active {
-  color: black;
-}
+
+
 
 /* Mobile Settings */
   
