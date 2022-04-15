@@ -5,7 +5,9 @@ from pathlib import Path
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+
 SECRET_KEY = os.environ.get('SK')
+
 
 DEBUG = False
 

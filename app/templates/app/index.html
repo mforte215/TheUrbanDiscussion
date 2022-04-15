@@ -10,7 +10,7 @@
 <div class="article-card">
 <a href="{% url 'article_detail' article.id %}">
 <img class="card-image" src="{{article.image}}" />
-<a href="{% url 'article_detail' article.id %}">{{article.title}}</a>
+<a class="article-card-link" href="{% url 'article_detail' article.id %}">{{article.title}}</a>
 </a>
 </div>
 {% endfor %}
