@@ -1,22 +1,16 @@
 import os
-from dotenv import load_dotenv
+import django_heroku
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-load_dotenv()
 
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.environ.get('SK')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['.herokuapp.com']
-SECURE_HSTS_SECONDS = True
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'theurbanistforum.herokuapp.com']
+
 
 # Application definition
 
@@ -161,3 +155,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'theurbanistforum/static')
 ]
+
+SECURE_HSTS_SECONDS = True
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+django_heroku.settings(locals())
