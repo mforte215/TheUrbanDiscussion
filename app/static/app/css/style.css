@@ -349,7 +349,7 @@ box-shadow: 1px 5px 15px -2px rgba(0,0,0,0.5);
 
 /* Mobile Settings */
   
-  @media screen and (max-width: 600px) {
+  @media only screen and (max-width: 467px) {
     .topnav a:not(:first-child) {display: none;}
     .topnav a.icon {
       float: right;
@@ -357,9 +357,17 @@ box-shadow: 1px 5px 15px -2px rgba(0,0,0,0.5);
       
     }
 
+    .article-container {
+      margin-top: 18%;
+      margin-left: 15%;
+      margin-right: 10%;
+      width: 70%;
+    }
+
     .article-list {
       display: grid;
       grid-template-columns: 1fr;
+      margin-top: 10%;
     }
     
     .article-card {
@@ -375,9 +383,7 @@ box-shadow: 1px 5px 15px -2px rgba(0,0,0,0.5);
       margin-left: 10%;
       
     }
-  }
-  
-  @media screen and (max-width: 600px) {
+ 
     .log-block {
       margin: 20% 20% 0% 40%;
     }
