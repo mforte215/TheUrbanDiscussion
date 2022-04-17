@@ -408,4 +408,82 @@ box-shadow: 1px 5px 15px -2px rgba(0,0,0,0.5);
       display: block;
       text-align: left;
     }
+
+    .detail-title {
+      font-size: large;
+      width: 90%;
+    }
+
+    .detail-content {
+      width: 80%;
+      margin: 3% 5% 5% 5%;
+    }
+
+    .detail-image {
+      width: 100%;
+      height: 200px;
+    }
+
+    .detail-image-container {
+      margin-top: 45px;
+    }
+
+    .thread-section {
+      font-size: small;
+    }
+
+    .header-title-section {
+      margin-top: 45px;
+    }
+
+    .create-discussion-title {
+      font-size: inherit;
+      margin-top: 46px;
+      margin-left: 10px;
+    }
+
+    .section-header-one {
+      width: 0%;
+    }
+    
+    .section-header-two {
+      width: 66%;
+      margin-left: 10%;
+    }
+
+    .section-header-three {
+      width: 20%;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .thread-section {
+      margin: auto 0 5% 6%;
+    }
+
+    .log-block {
+      width: 60%;
+      margin: 20% 20% 0% 15%;
+    }
+
+    .create-section-header-one {
+      width: 0;
+    }
+
+    .create-section-header-two {
+      width: 66%;
+      margin-left: 10%;
+    }
+
+    .create-section-header-three {
+      width: 20%;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    
+    .create-discussion-section {
+      width: 80%;
+      margin: auto;
+    }
+
   }
